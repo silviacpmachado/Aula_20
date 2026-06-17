@@ -157,6 +157,67 @@ try:
 except Exception as e:
     print(f'Erro ao calcular Outliers {e}')
 
+# Calculando a Assimetria  
+try:
+    # Assimetria
+    # Medida q indica como os dados estão distribuidos em torno do valor central
+    # Estão distribuidos em torno do centro?
+    # Existe uma qtd maior de registros altos ou baixos?
+    # Para que lado está o peso.
+    # É a medida usada para descrever o grau de simetria ou assimetria
+
+    # INTERPRETAÇÃO (Pontos de Observação):
+    # Assimetria > 1: Positiva Alta
+    # Valores Altos puxando a média para cima.
+    # A média tende a ser maior que a mediana.
+
+    # Assimetria entre 0.5 e 1: Positiva Moderada
+    # Há cauda à direita, mas é menos acentuada.
+
+    # Assimetria entre -0.5 e 0.5: Distribuição aproximadamente simétrica
+    # Tendência de dados equilibrados
+    # A média. a mediana e a moda tem valores próximos.
+
+    # Assimetria entre -1 e -0.5: Negativa Moderada
+    # Há cauda à esquerda, mas é menos acentuada.
+
+    # Assimetria < -1: Negativa Alta
+    # Valores Baixos puxando a média para baixo.
+    # A média tende a ser menor que a mediana.
+    assimetria = df_roubo_veiculo['roubo_veiculo'].skew()
+
+    # Curtose
+    # Descreve o formato da distribuição
+    # Nos ajuda a entender como os dados estão concentrados, 
+    # se próximo a média ou mais espalhados.
+    # pode indicar outliers 
+
+    # Interpretação:
+    # Curtose = 0 (Mesocúrtica)
+    # Concentração moderada no centro
+    # Extremos com menos relevância
+
+    # Curtose > 0 (leptocúrtica) 
+    # Pico mais alto
+    # Mais valores próximo a média
+    # Comum ter outliers bem pesados
+
+    # Curtose < 0 (platicúrtica)
+    # Pico mais achatado
+    # Dados mais espalhados
+    # Poucos extremos, mas pode haver outliers
+
+    curtose = df_roubo_veiculo['roubo_veiculo'].kurtosis()
+
+
+    print('\nMedidas de Distribuição')
+    print(40*'=')
+    print(f'Assimetria: {assimetria}')
+    print(f'Curtose: {curtose}')
+
+except Exception as e:
+    print(f'Erro ao calcular outiliers')
+
 
 # Visualizando os dados
 try:
